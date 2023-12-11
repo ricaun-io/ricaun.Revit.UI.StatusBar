@@ -212,7 +212,7 @@ namespace ricaun.Revit.UI.StatusBar
 
         private void RefreshBackground()
         {
-            progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+            progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Background);
         }
     }
 }

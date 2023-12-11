@@ -15,6 +15,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit
         {
             ribbonPanel = application.CreatePanel("StatusBar");
             ribbonPanel.RowStackedItems(
+                ribbonPanel.CreatePushButton<Commands.CommandRevit>("Revit"),
                 ribbonPanel.CreatePushButton<Commands.CommandTheme>("Theme"),
                 ribbonPanel.CreatePushButton<Commands.CommandDelayIndeterminate>("Delay"),
                 ribbonPanel.CreatePushButton<Commands.CommandElements>("Elements"),
