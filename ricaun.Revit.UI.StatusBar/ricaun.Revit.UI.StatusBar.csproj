@@ -50,7 +50,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Revit.UI.StatusBar</PackageId>
-    <Version>1.0.0-alpha.2</Version>
+    <Version>1.0.0-alpha.3</Version>
     <ProjectGuid>{841E5210-49AA-415B-9B05-23B47C840BA1}</ProjectGuid>
   </PropertyGroup>
 

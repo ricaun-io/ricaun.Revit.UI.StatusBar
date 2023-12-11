@@ -200,9 +200,18 @@ namespace ricaun.Revit.UI.StatusBar
         /// Refresh Milliseconds (default: 50)
         /// </summary>
         public int RefreshMilliseconds { get; set; } = 50;
+        /// <summary>
+        /// Initialize Milliseconds (default: 250)
+        /// </summary>
+        public int InitializeMilliseconds { get; set; } = 250;
 
         private RevitProgressBar RefreshStopwatchBackground()
         {
+            if (InitializeMilliseconds > 0 && stopwatch.ElapsedMilliseconds < InitializeMilliseconds)
+            {
+                return this;
+            }
+            InitializeMilliseconds = 0;
             if (stopwatch.ElapsedMilliseconds > RefreshMilliseconds)
             {
                 StatusBarController.Show(progressBarStackPanel);
@@ -214,14 +223,21 @@ namespace ricaun.Revit.UI.StatusBar
 
         private void RefreshBackground(bool disable = false)
         {
-            RevitRibbonController.Disable();
+            //if (!disable)
+            //    RevitRibbonController.Disable();
+
             ApplicationUtils.DoEvents();
-            ApplicationUtils.SetCursorWait();
+            //ApplicationUtils.SetCursorWait();
             //progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
             if (disable)
             {
                 ApplicationUtils.SetCursorDefault();
                 RevitRibbonController.Enable();
+            }
+            else
+            {
+                ApplicationUtils.SetCursorWait();
+                RevitRibbonController.Disable();
             }
         }
     }
