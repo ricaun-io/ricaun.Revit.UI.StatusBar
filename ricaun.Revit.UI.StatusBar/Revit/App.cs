@@ -2,6 +2,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
+using ricaun.Revit.UI.StatusBar.Utils;
 using System;
 
 namespace ricaun.Revit.UI.StatusBar.Revit
@@ -19,6 +20,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit
                 ribbonPanel.CreatePushButton<Commands.CommandElements>("Elements"),
                 ribbonPanel.CreatePushButton<Commands.CommandMultiple>("Multiple")
                 );
+
             return Result.Succeeded;
         }
 

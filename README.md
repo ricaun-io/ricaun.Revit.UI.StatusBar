@@ -49,6 +49,14 @@ using (var progressBar = new RevitProgressBar())
 }
 ```
 
+## Utils
+### BalloonUtils
+
+The `BalloonUtils` class has some utility methods to show a balloon in Revit UI.
+```C#
+BalloonUtils.Show("Message", "Title/Category");
+```
+
 ## Release
 
 * [Latest release](../../releases/latest)

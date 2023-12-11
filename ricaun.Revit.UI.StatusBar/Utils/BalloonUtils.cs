@@ -10,19 +10,19 @@ namespace ricaun.Revit.UI.StatusBar.Utils
         /// <summary>
         /// Show
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="message"></param>
         /// <param name="category"></param>
         /// <param name="uri"></param>
         /// <param name="favorite"></param>
         /// <remarks>https://thebuildingcoder.typepad.com/blog/2014/03/using-balloon-tips-in-revit.html</remarks>
-        public static void Show(string text, string category = null, string uri = null, bool favorite = false)
+        public static void Show(string message, string category = null, string uri = null, bool favorite = false)
         {
             var ri = new Autodesk.Internal.InfoCenter.ResultItem();
 
             if (!string.IsNullOrWhiteSpace(category))
                 ri.Category = category;
 
-            ri.Title = text;
+            ri.Title = message;
             ri.IsFavorite = favorite;
 
             try { ri.Uri = new Uri(uri); } catch { }
