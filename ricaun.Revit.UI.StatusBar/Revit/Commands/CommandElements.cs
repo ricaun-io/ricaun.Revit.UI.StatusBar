@@ -20,19 +20,22 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
 
             var elements = new FilteredElementCollector(document)
                 .WhereElementIsNotElementType()
-                .OfType<Element>();
+                .OfType<Element>()
+                .ToList();
 
-            RevitProgressBarUtils.Run("Revit Repeat", 10, (i) =>
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+            RevitProgressBarUtils.Run("Revit Repeat", 20, (i) =>
             {
-                RevitProgressBarUtils.Run("Revit Elements", elements, (element) =>
+                RevitProgressBarUtils.Run($"Revit Elements {i}", elements, (element) =>
                 {
                     //System.Console.WriteLine(element.Name);
                 });
             });
 
+            System.Console.WriteLine($"Stopwatch: {stopwatch.ElapsedMilliseconds}");
+
             return Result.Succeeded;
         }
     }
-
-
 }

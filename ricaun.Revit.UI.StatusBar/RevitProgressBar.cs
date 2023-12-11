@@ -191,7 +191,9 @@ namespace ricaun.Revit.UI.StatusBar
             stopwatch.Stop();
 
             if (ForceToRefresh)
-                RefreshBackground();
+            {
+                RefreshBackground(true);
+            }
         }
 
         /// <summary>
@@ -210,9 +212,17 @@ namespace ricaun.Revit.UI.StatusBar
             return this;
         }
 
-        private void RefreshBackground()
+        private void RefreshBackground(bool disable = false)
         {
-            progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Background);
+            RevitRibbonController.Disable();
+            System.Windows.Forms.Application.DoEvents();
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+            //progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
+            if (disable)
+            {
+                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                RevitRibbonController.Enable();
+            }
         }
     }
 }

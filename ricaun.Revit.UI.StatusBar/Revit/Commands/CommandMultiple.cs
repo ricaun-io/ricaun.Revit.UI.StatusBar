@@ -12,16 +12,16 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
         {
             UIApplication uiapp = commandData.Application;
 
-            using (new RevitProgressBar(true).Run(100000, (i) =>
+            using (new RevitProgressBar(true).Run(300000, (i) =>
             {
-                if (i == 50000)
+                if (i == 180000)
                 {
                     using (new RevitProgressBar(true).SetCurrentOperation("Internal").Run(100000, (i) =>
                     {
 
                     })) { }
                 }
-                if (i == 90000)
+                if (i == 190000)
                 {
                     using (new RevitProgressBar(true).SetCurrentOperation("Internal 2").Run(100000, (i) =>
                     {
