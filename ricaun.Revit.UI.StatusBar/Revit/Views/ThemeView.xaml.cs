@@ -44,6 +44,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Views
         {
             Task.Run(async () =>
             {
+                await Task.Delay(1000);
                 progressBar.Data.CurrentValue = 0;
                 for (int i = (int)progressBar.Data.MinimumValue; i <= (int)progressBar.Data.MaximumValue; i++)
                 {
@@ -58,6 +59,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Views
         {
             this.Width = 500;
             this.SizeToContent = SizeToContent.Height;
+            this.WindowStyle = WindowStyle.None;
             this.ShowInTaskbar = false;
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
