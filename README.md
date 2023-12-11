@@ -23,6 +23,14 @@ RevitProgressBarUtils.Run("Revit Elements", elements, (element) =>
 });
 ```
 
+```C#
+int repeat = 100000;
+RevitProgressBarUtils.Run("Revit Repeat", repeat, (i) =>
+{
+    System.Console.WriteLine(i);
+});
+```
+
 ## RevitProgressBar
 
 The `RevitProgressBar` class implements the `IDisposable` interface, so it can be used in a `using` statement.
