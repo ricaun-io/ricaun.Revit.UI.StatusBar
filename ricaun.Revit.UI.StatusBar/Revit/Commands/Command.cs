@@ -4,6 +4,8 @@ using Autodesk.Revit.UI;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ricaun.Revit.UI.StatusBar.Revit.Commands
 {
