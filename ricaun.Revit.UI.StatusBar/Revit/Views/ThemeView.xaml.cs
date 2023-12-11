@@ -1,6 +1,7 @@
 ﻿using ricaun.Revit.UI.StatusBar.Controls;
 using ricaun.Revit.UI.StatusBar.Controls.Themes;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -27,6 +28,13 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Views
                 {
                     this.Close();
                 }
+                if (e.Key == System.Windows.Input.Key.R)
+                {
+                    foreach (var progressBar in Root.Children.OfType<ProgressBarStackPanel>())
+                    {
+                        Run(progressBar);
+                    }
+                }
             };
 
         }
@@ -44,6 +52,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Views
         {
             Task.Run(async () =>
             {
+                progressBar.Data.CurrentValue = 0;
                 await Task.Delay(1000);
                 progressBar.Data.CurrentValue = 0;
                 for (int i = (int)progressBar.Data.MinimumValue; i <= (int)progressBar.Data.MaximumValue; i++)

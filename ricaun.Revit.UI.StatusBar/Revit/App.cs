@@ -18,7 +18,8 @@ namespace ricaun.Revit.UI.StatusBar.Revit
                 ribbonPanel.CreatePushButton<Commands.CommandTheme>("Theme"),
                 ribbonPanel.CreatePushButton<Commands.CommandDelayIndeterminate>("Delay"),
                 ribbonPanel.CreatePushButton<Commands.CommandElements>("Elements"),
-                ribbonPanel.CreatePushButton<Commands.CommandMultiple>("Multiple")
+                ribbonPanel.CreatePushButton<Commands.CommandMultiple>("Multiple"),
+                ribbonPanel.CreatePushButton<Commands.CommandView>("View")
                 );
 
             return Result.Succeeded;
