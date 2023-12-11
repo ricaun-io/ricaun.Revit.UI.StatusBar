@@ -8,6 +8,7 @@ using System.Threading;
 
 namespace ricaun.Revit.UI.StatusBar.Revit.Commands
 {
+
     [Transaction(TransactionMode.Manual)]
     public class CommandDelay : IExternalCommand
     {

@@ -6,16 +6,19 @@ using System;
 
 namespace ricaun.Revit.UI.StatusBar.Revit
 {
-
     [AppLoader]
     public class App : IExternalApplication
     {
         private static RibbonPanel ribbonPanel;
         public Result OnStartup(UIControlledApplication application)
         {
-            ribbonPanel = application.CreatePanel("PanelName");
-            ribbonPanel.CreatePushButton<Commands.Command>()
-                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
+            ribbonPanel = application.CreatePanel("StatusBar");
+            ribbonPanel.RowStackedItems(
+                ribbonPanel.CreatePushButton<Commands.CommandTheme>("Theme"),
+                ribbonPanel.CreatePushButton<Commands.CommandDelayIndeterminate>("Delay"),
+                ribbonPanel.CreatePushButton<Commands.CommandElements>("Elements"),
+                ribbonPanel.CreatePushButton<Commands.CommandMultiple>("Multiple")
+                );
             return Result.Succeeded;
         }
 
