@@ -215,12 +215,12 @@ namespace ricaun.Revit.UI.StatusBar
         private void RefreshBackground(bool disable = false)
         {
             RevitRibbonController.Disable();
-            System.Windows.Forms.Application.DoEvents();
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+            ApplicationUtils.DoEvents();
+            ApplicationUtils.SetCursorWait();
             //progressBarStackPanel.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
             if (disable)
             {
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+                ApplicationUtils.SetCursorDefault();
                 RevitRibbonController.Enable();
             }
         }

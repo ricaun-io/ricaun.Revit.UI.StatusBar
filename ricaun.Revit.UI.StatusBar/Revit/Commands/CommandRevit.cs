@@ -11,10 +11,14 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
         {
             UIApplication uiapp = commandData.Application;
 
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
             RevitProgressBarUtils.Run(uiapp.Application.VersionName, 100, (i) =>
             {
                 System.Threading.Thread.Sleep(i);
             });
+
+            System.Console.WriteLine($"Stopwatch: {stopwatch.ElapsedMilliseconds}");
 
             return Result.Succeeded;
         }
