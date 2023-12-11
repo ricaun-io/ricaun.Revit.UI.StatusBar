@@ -190,10 +190,7 @@ namespace ricaun.Revit.UI.StatusBar
             StatusBarController.Hide();
             stopwatch.Stop();
 
-            if (ForceToRefresh)
-            {
-                RefreshBackground(true);
-            }
+            RefreshBackground(ForceToRefresh);
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ using Autodesk.Revit.UI;
 namespace ricaun.Revit.UI.StatusBar.Revit.Commands
 {
     [Transaction(TransactionMode.Manual)]
-    public class CommandNone : IExternalCommand
+    public class CommandNoneLong : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elementSet)
         {
@@ -17,7 +17,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
             {
                 revitProgressBar.SetCurrentOperation(uiapp.Application.VersionName);
                 revitProgressBar.SetHasCancelButton(true);
-                revitProgressBar.Run(10000, (i) =>
+                revitProgressBar.Run(1000000, (i) =>
                 {
 
                 });
