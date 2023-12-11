@@ -21,7 +21,7 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
                 revitProgressBar.SetMaximumValue(100000);
                 for (int i = 0; i <= 100000; i++)
                 {
-                    revitProgressBar.Update();
+                    revitProgressBar.Increment();
                 }
                 revitProgressBar.SetCurrentOperation("Run").Run(100000, i =>
                 {

@@ -82,7 +82,7 @@ namespace ricaun.Revit.UI.StatusBar
             return this;
         }
 
-        public RevitProgressBar Update(int currentValuePlus = 1)
+        public RevitProgressBar Increment(int currentValuePlus = 1)
         {
             progressBarStackPanel.Data.CurrentValue += currentValuePlus;
             RefreshStopwatchBackground();
