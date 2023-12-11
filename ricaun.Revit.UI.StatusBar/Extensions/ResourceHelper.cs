@@ -6,6 +6,9 @@ using System.Windows;
 
 namespace ricaun.Revit.UI.StatusBar.Extensions
 {
+    /// <summary>
+    /// ResourceHelper
+    /// </summary>
     public static class ResourceHelper
     {
         /// <summary>

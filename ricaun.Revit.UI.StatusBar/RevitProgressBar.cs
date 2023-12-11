@@ -7,29 +7,65 @@ using System.Linq;
 
 namespace ricaun.Revit.UI.StatusBar
 {
+    /// <summary>
+    /// RevitProgressBar
+    /// </summary>
     public class RevitProgressBar : IDisposable
     {
         private readonly Stopwatch stopwatch;
         private readonly ProgressBarStackPanel progressBarStackPanel;
 
+        /// <summary>
+        /// RevitProgressBar
+        /// </summary>
+        /// <param name="hasCancelButton"></param>
         public RevitProgressBar(bool hasCancelButton = false)
         {
             stopwatch = Stopwatch.StartNew();
             progressBarStackPanel = new ProgressBarStackPanel(hasCancelButton);
             this.ForceToRefresh = StatusBarController.IsVisible;
         }
+        /// <summary>
+        /// Run
+        /// </summary>
+        /// <param name="currentOperation"></param>
+        /// <param name="count"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public RevitProgressBar Run(string currentOperation, int count, Action<int> action)
         {
             return SetCurrentOperation(currentOperation).Run(count, action);
         }
+        /// <summary>
+        /// Run
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public RevitProgressBar Run(int count, Action<int> action)
         {
             return Run(Enumerable.Range(0, count), action);
         }
+        /// <summary>
+        /// Run
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="currentOperation"></param>
+        /// <param name="collection"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public RevitProgressBar Run<T>(string currentOperation, IEnumerable<T> collection, Action<T> action)
         {
             return SetCurrentOperation(currentOperation).Run(collection, action);
         }
+
+        /// <summary>
+        /// Run
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public RevitProgressBar Run<T>(IEnumerable<T> collection, Action<T> action)
         {
             progressBarStackPanel.Data.CurrentValue = 0;
@@ -46,50 +82,89 @@ namespace ricaun.Revit.UI.StatusBar
             return this;
         }
 
+        /// <summary>
+        /// SetCurrentOperation
+        /// </summary>
+        /// <param name="currentOperation"></param>
+        /// <returns></returns>
         public RevitProgressBar SetCurrentOperation(string currentOperation)
         {
             progressBarStackPanel.Data.CurrentOperation = currentOperation;
             return this;
         }
 
+        /// <summary>
+        /// SetCurrentValue
+        /// </summary>
+        /// <param name="currentValue"></param>
+        /// <returns></returns>
         public RevitProgressBar SetCurrentValue(double currentValue)
         {
             progressBarStackPanel.Data.CurrentValue = currentValue;
             return this;
         }
 
+        /// <summary>
+        /// SetMinimumValue
+        /// </summary>
+        /// <param name="minimumValue"></param>
+        /// <returns></returns>
         public RevitProgressBar SetMinimumValue(double minimumValue)
         {
             progressBarStackPanel.Data.MinimumValue = minimumValue;
             return this;
         }
 
+        /// <summary>
+        /// SetMaximumValue
+        /// </summary>
+        /// <param name="maximumValue"></param>
+        /// <returns></returns>
         public RevitProgressBar SetMaximumValue(double maximumValue)
         {
             progressBarStackPanel.Data.MaximumValue = maximumValue;
             return this;
         }
 
+        /// <summary>
+        /// SetIsIndeterminate
+        /// </summary>
+        /// <param name="isIndeterminate"></param>
+        /// <returns></returns>
         public RevitProgressBar SetIsIndeterminate(bool isIndeterminate)
         {
             progressBarStackPanel.Data.IsIndeterminate = isIndeterminate;
             return this;
         }
 
+        /// <summary>
+        /// SetHasCancelButton
+        /// </summary>
+        /// <param name="hasCancelButton"></param>
+        /// <returns></returns>
         public RevitProgressBar SetHasCancelButton(bool hasCancelButton)
         {
             progressBarStackPanel.Data.HasCancelButton = hasCancelButton;
             return this;
         }
 
-        public RevitProgressBar Increment(int currentValuePlus = 1)
+        /// <summary>
+        /// Increment
+        /// </summary>
+        /// <param name="incrementCurrentValue"></param>
+        /// <returns></returns>
+        public RevitProgressBar Increment(int incrementCurrentValue = 1)
         {
-            progressBarStackPanel.Data.CurrentValue += currentValuePlus;
+            progressBarStackPanel.Data.CurrentValue += incrementCurrentValue;
             RefreshStopwatchBackground();
             return this;
         }
 
         private bool cancelPressed { get; set; } = false;
+        /// <summary>
+        /// IsCancelling
+        /// </summary>
+        /// <returns></returns>
         public bool IsCancelling()
         {
             if (progressBarStackPanel.Data.CommandCancel is null)
@@ -98,12 +173,18 @@ namespace ricaun.Revit.UI.StatusBar
             }
             return cancelPressed;
         }
+        /// <summary>
+        /// Cancel
+        /// </summary>
         public void Cancel()
         {
             cancelPressed = true;
         }
 
         private bool ForceToRefresh;
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             StatusBarController.Hide();

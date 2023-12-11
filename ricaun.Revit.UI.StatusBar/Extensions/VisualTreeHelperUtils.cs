@@ -3,8 +3,17 @@ using System.Windows.Media;
 
 namespace ricaun.Revit.UI.StatusBar.Extensions
 {
+    /// <summary>
+    /// VisualTreeHelperUtils
+    /// </summary>
     public static class VisualTreeHelperUtils
     {
+        /// <summary>
+        /// FindParent
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="child"></param>
+        /// <returns></returns>
         public static T FindParent<T>(this DependencyObject child) where T : DependencyObject
         {
             if (child is null) return null;
@@ -15,6 +24,13 @@ namespace ricaun.Revit.UI.StatusBar.Extensions
 
             return parentElement.FindParent<T>();
         }
+        /// <summary>
+        /// FindParent
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="child"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static T FindParent<T>(this DependencyObject child, string name) where T : FrameworkElement
         {
             if (child is null) return null;
@@ -26,6 +42,12 @@ namespace ricaun.Revit.UI.StatusBar.Extensions
 
             return parentElement.FindParent<T>(name);
         }
+        /// <summary>
+        /// FindChild
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parent"></param>
+        /// <returns></returns>
         public static T FindChild<T>(this DependencyObject parent) where T : DependencyObject
         {
             if (parent is null) return null;
@@ -41,6 +63,13 @@ namespace ricaun.Revit.UI.StatusBar.Extensions
             }
             return null;
         }
+        /// <summary>
+        /// FindChild
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parent"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static T FindChild<T>(this DependencyObject parent, string name) where T : FrameworkElement
         {
             if (parent is null) return null;
