@@ -1,0 +1,62 @@
+﻿<StackPanel x:Class="ricaun.Revit.UI.StatusBar.Controls.ProgressBarStackPanel"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:local="clr-namespace:ricaun.Revit.UI.StatusBar.Controls"
+            mc:Ignorable="d">
+
+    <StackPanel.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Controls.xaml" />
+                <ResourceDictionary Source="Themes/ColorDefault.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </StackPanel.Resources>
+
+    <StackPanel Orientation="Horizontal">
+
+        <Button Margin="4 2"
+                Height="20"
+                Width="54"
+                Content="Cancel"
+                Command="{Binding CommandCancel}"
+                VerticalAlignment="Center"
+                Visibility="{Binding HasCancelButton, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <ProgressBar Margin="4"
+                     Height="16"
+                     Width="240"
+                     Value="{Binding CurrentValue}"
+                     Minimum="{Binding MinimumValue}"
+                     Maximum="{Binding MaximumValue}"
+                     IsIndeterminate="{Binding IsIndeterminate}"
+                     VerticalAlignment="Center" />
+
+        <TextBlock Margin="4"
+                   Text="{Binding DisplayValue, StringFormat={}{0:0}%}"
+                   VerticalAlignment="Center">
+        </TextBlock>
+
+        <!--
+        <Rectangle VerticalAlignment="Stretch"
+                   Width="1"
+                   Margin="4"
+                   Stroke="{DynamicResource Color.Static.Foreground}" />
+        -->
+
+        <TextBlock Margin="4"
+                   Text="-"
+                   VerticalAlignment="Center">
+        </TextBlock>
+
+        <TextBlock Margin="4"
+                   Text="{Binding CurrentOperation}"
+                   VerticalAlignment="Center">
+        </TextBlock>
+
+    </StackPanel>
+
+</StackPanel>

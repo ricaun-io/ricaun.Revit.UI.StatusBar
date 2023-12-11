@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="Color.Static.Background"
+                     Color="#F8F8F8" />
+    <SolidColorBrush x:Key="Color.Static.Border"
+                     Color="#E0E0E0" />
+    <SolidColorBrush x:Key="Color.Static.Foreground"
+                     Color="#252525" />
+
+    <SolidColorBrush x:Key="Button.Static.Background"
+                     Color="#ffffff" />
+    <SolidColorBrush x:Key="Button.Static.Border"
+                     Color="#c0c0c0" />
+    <SolidColorBrush x:Key="Button.Static.Foreground"
+                     Color="#252525" />
+
+    <SolidColorBrush x:Key="Button.MouseOver.Background"
+                     Color="#ececec" />
+    <SolidColorBrush x:Key="Button.MouseOver.Border"
+                     Color="#b6b6b6" />
+    <SolidColorBrush x:Key="Button.Pressed.Background"
+                     Color="#dfdfdf" />
+    <SolidColorBrush x:Key="Button.Pressed.Border"
+                     Color="#b0b0b0" />
+    <SolidColorBrush x:Key="Button.Disabled.Background"
+                     Color="#ffffff" />
+    <SolidColorBrush x:Key="Button.Disabled.Border"
+                     Color="#c0c0c0" />
+    <SolidColorBrush x:Key="Button.Disabled.Foreground"
+                     Color="#9e9e9e" />
+
+    <SolidColorBrush x:Key="ProgressBar.Static.Background"
+                     Color="#ececec" />
+    <SolidColorBrush x:Key="ProgressBar.Static.Border"
+                     Color="#b6b6b6" />
+    <SolidColorBrush x:Key="ProgressBar.Static.Foreground"
+                     Color="#7000A9FF" />
+
+    <SolidColorBrush x:Key="ProgressBar.Static.Foreground2"
+                     Color="#7006b025" />
+
+</ResourceDictionary>

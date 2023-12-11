@@ -1,0 +1,35 @@
+# ------------------------------------------------------------------------------
+# Build.yml
+# ------------------------------------------------------------------------------
+
+name: Build
+
+on:
+  push:
+  pull_request:
+    branches-ignore:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  Build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: NuGet Setup
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+      - name: "NuGet Add Source Organization"
+        run: if ("${{ secrets.ORGANIZATION_SOURCE_PACKAGE_PASSWORD }}" -ne "") { dotnet nuget add source --username ${{ secrets.ORGANIZATION_SOURCE_PACKAGE_USERNAME }} --password ${{ secrets.ORGANIZATION_SOURCE_PACKAGE_PASSWORD }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{github.repository_owner}}/index.json" }
+
+      - name: Run './build/build.cmd'
+        run: ./build/build.cmd --root ./build
+        env:
+          GitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          SignFile: ${{ secrets.SIGN_FILE }}
+          SignPassword: ${{ secrets.SIGN_PASSWORD }}
+          InstallationFiles: ${{ secrets.INSTALLATION_FILES }}
