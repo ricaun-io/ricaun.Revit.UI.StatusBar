@@ -30,8 +30,6 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
                 });
             });
 
-
-
             return Result.Succeeded;
         }
     }

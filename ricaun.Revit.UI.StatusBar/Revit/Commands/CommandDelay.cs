@@ -25,10 +25,39 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
                 {
                     Thread.Sleep(100);
                 });
-                revitProgressBar.SetIsIndeterminate(true).Run("Indeterminate", 30, (i) =>
+                revitProgressBar.Run("Some Text Progress", 30, (i) =>
                 {
                     Thread.Sleep(100);
                 });
+            }
+
+            return Result.Succeeded;
+        }
+    }
+
+    [Transaction(TransactionMode.Manual)]
+    public class CommandDelayIndeterminate : IExternalCommand
+    {
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elementSet)
+        {
+            UIApplication uiapp = commandData.Application;
+
+            using (var revitProgressBar = new RevitProgressBar())
+            {
+                revitProgressBar.Run("Run 10", 10, (i) =>
+                {
+                    Thread.Sleep(100);
+                });
+                revitProgressBar.Run("Running 10", 10, (i) =>
+                {
+                    Thread.Sleep(100);
+                });
+                revitProgressBar.SetIsIndeterminate(true);
+                for (int i = 0; i < 300; i++)
+                {
+                    Thread.Sleep(10);
+                    revitProgressBar.Increment(0);
+                }
             }
 
             return Result.Succeeded;
