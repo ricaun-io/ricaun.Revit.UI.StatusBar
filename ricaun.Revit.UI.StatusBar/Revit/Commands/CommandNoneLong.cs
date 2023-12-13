@@ -1,6 +1,7 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ricaun.Revit.UI.StatusBar.Utils;
 
 namespace ricaun.Revit.UI.StatusBar.Revit.Commands
 {
@@ -19,8 +20,8 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
                 revitProgressBar.SetHasCancelButton(true);
                 revitProgressBar.Run(1000000, (i) =>
                 {
-
                 });
+                if (revitProgressBar.IsCancelling()) BalloonUtils.Show("Cancel", "RevitProgressBar");
             }
 
             System.Console.WriteLine($"Stopwatch: {stopwatch.ElapsedMilliseconds}");
