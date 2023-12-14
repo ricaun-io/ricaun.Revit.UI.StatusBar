@@ -16,7 +16,7 @@
 
   <!-- RevitVersion -->
   <PropertyGroup>
-    <TargetFrameworks>net47;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net47;net7.0-windows;net8.0-windows</TargetFrameworks>
   </PropertyGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('net4'))">
@@ -83,6 +83,7 @@
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(PackageId)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIconUrl />
   </PropertyGroup>
 
@@ -92,6 +93,7 @@
   <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+  
   <ItemGroup>
     <Page Remove="Controls\Themes\ColorDark.xaml" />
     <Page Remove="Controls\Themes\ColorDefault.xaml" />
