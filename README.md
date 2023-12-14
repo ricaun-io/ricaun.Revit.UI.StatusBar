@@ -41,10 +41,10 @@ The `RevitProgressBar` class implements the `IDisposable` interface, so it can b
 ```C#
 using (var progressBar = new RevitProgressBar())
 {
-	progressBar.Run("Revit Elements", elements, (element) =>
-	{
-		System.Console.WriteLine(element.Name);
-	}
+    progressBar.Run("Revit Elements", elements, (element) =>
+    {
+        System.Console.WriteLine(element.Name);
+    }
 }
 ```
 
@@ -53,12 +53,12 @@ or...
 ```C#
 using (var progressBar = new RevitProgressBar())
 {
-	progressBar.SetCurrentOperation("Revit Elements");
-	foreach (var element in elements)
-	{
-		progressBar.Increment();
-		System.Console.WriteLine(element.Name);
-	}
+    progressBar.SetCurrentOperation("Revit Elements");
+    foreach (var element in elements)
+    {
+        progressBar.Increment();
+        System.Console.WriteLine(element.Name);
+    }
 }
 ```
 ### Example
