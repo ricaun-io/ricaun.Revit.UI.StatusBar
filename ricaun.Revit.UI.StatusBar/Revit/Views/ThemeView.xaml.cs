@@ -14,11 +14,11 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Views
             InitializeComponent();
             InitializeWindow();
 
-            CreateProgressBar("Autodesk Revit 2019");
-            CreateProgressBar("Autodesk Revit 2020");
-            CreateProgressBar("Autodesk Revit 2021");
-            CreateProgressBar("Autodesk Revit 2022");
-            CreateProgressBar("Autodesk Revit 2023");
+            CreateProgressBar("Autodesk Revit 2019", "default");
+            CreateProgressBar("Autodesk Revit 2020", "default");
+            CreateProgressBar("Autodesk Revit 2021", "default");
+            CreateProgressBar("Autodesk Revit 2022", "default");
+            CreateProgressBar("Autodesk Revit 2023", "default");
             CreateProgressBar("Autodesk Revit 2024", "light");
             CreateProgressBar("Autodesk Revit 2024", "dark");
 

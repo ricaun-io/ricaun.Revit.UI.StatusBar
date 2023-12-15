@@ -36,9 +36,6 @@
     <SolidColorBrush x:Key="ProgressBar.Static.Border"
                      Color="#b6b6b6" />
     <SolidColorBrush x:Key="ProgressBar.Static.Foreground"
-                     Color="#7000A9FF" />
-
-    <SolidColorBrush x:Key="ProgressBar.Static.Foreground2"
-                     Color="#7006b025" />
+                     Color="#70178fe6" />
 
 </ResourceDictionary>

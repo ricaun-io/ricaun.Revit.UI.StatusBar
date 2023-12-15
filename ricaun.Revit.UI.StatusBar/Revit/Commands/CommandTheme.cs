@@ -12,11 +12,6 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
         {
             UIApplication uiapp = commandData.Application;
 
-            RevitProgressBarUtils.Run("Theme", 25, (i) =>
-            {
-                Thread.Sleep(100);
-            });
-
             UIThemeManager.CurrentTheme = UIThemeManager.CurrentTheme == UITheme.Light ? UITheme.Dark : UITheme.Light;
             Thread.Sleep(100);
 
@@ -24,9 +19,6 @@ namespace ricaun.Revit.UI.StatusBar.Revit.Commands
             {
                 Thread.Sleep(100);
             });
-
-            UIThemeManager.CurrentTheme = UIThemeManager.CurrentTheme == UITheme.Light ? UITheme.Dark : UITheme.Light;
-            Thread.Sleep(100);
 
             return Result.Succeeded;
         }
