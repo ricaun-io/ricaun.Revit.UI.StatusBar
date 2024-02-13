@@ -76,9 +76,9 @@ using (var revitProgressBar = new RevitProgressBar())
         System.Console.WriteLine(element.Name);
     });
     if (revitProgressBar.IsCancelling())
-	{
-		// RevitProgressBar Canceled
-	}
+    {
+        // RevitProgressBar Canceled
+    }
 }
 ```
 
@@ -87,14 +87,14 @@ or...
 ```C#
 using (var revitProgressBar = new RevitProgressBar(true))
 {
-	revitProgressBar.Run("Revit Elements", elements, (element) =>
+    revitProgressBar.Run("Revit Elements", elements, (element) =>
     {
         System.Console.WriteLine(element.Name);
     });
     if (revitProgressBar.IsCancelling())
-	{
-		// RevitProgressBar Canceled
-	}
+    {
+        // RevitProgressBar Canceled
+    }
 }
 ```
 
@@ -206,15 +206,15 @@ namespace RevitAddin.Commands
 
             using (var revitProgressBar = new RevitProgressBar(true))
             {
-	            revitProgressBar.Run(uiapp.Application.VersionName, 100, (i) =>
+                revitProgressBar.Run(uiapp.Application.VersionName, 100, (i) =>
                 {
                     System.Threading.Thread.Sleep(i);
                 });
 
                 if (revitProgressBar.IsCancelling())
-	            {
-		            // RevitProgressBar Canceled
-	            }
+                {
+                    // RevitProgressBar Canceled
+                }
             }
 
             return Result.Succeeded;
